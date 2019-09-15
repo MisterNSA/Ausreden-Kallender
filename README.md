@@ -1,4 +1,4 @@
-Erstellen eines Kallenders(Fürs erste ein Programm - später Kalender mit Datumssynchronikation und GUI), der Zufällig (Ein Wert darf allerdings maximal alle 5 Tage vorkommen) 
+Erstellen eines Kallenders(Fürs erste ein Programm - später Kalender mit Datumssynchronisation und GUI), der Zufällig (Ein Wert darf allerdings maximal alle 5 Tage vorkommen) 
 eine Ausrede für auftretende Fehler ausgibt.
 
 Momentane Vorschläge für Fehler:
