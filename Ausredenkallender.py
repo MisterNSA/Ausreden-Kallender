@@ -1,6 +1,6 @@
 # Projektname: Ausredenkallender 
 # Ersteller: Tobias Weber
-# Version 0.0 17.08.1
+# Version 0.1 28.09.2019
 
 
 '''
