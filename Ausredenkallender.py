@@ -48,14 +48,14 @@ def Zufallsgenerator():
     Ausrede_27 = "Unser ISP hat (Switching-, Routing-, SMDS-, etc.) Probleme"
     Ausrede_28 = "Die root-Nameserver sind nicht mehr synchronisiert"
     Ausrede_29 = "Exzessiver Hochspannungsschutz verhindert eine schnellere Übertragung der Daten"
-    Ausrede_30 ="Der digitale Manipulator überschreitet seine Geschwindigkeitparameter"
-    Ausrede_31 ="Jemand hat Zwergpakete gebroadcastet und der Router wusste nicht mit ihnen umzugehen"
+    Ausrede_30 = "Der digitale Manipulator überschreitet seine Geschwindigkeitparameter"
+    Ausrede_31 = "Jemand hat Zwergpakete gebroadcastet und der Router wusste nicht mit ihnen umzugehen"
     Ausrede_32 = "Quanten-Decoherenzen"
     Ausrede_33 = "Ich würde ihnen gerne helfen, aber die Chefetage hat mir einen Übergestellten Auftrag gegeben"
     Ausrede_34 = "Es findet gleich eine Besprechung bezüglich der Businessrelevanten-Actionpoints statt"
     Ausrede_35 = "Mal wieder ein Klassicher BNC (brain not connected) Fehler"
     Ausrede_36 = "Veraltete Hardware"
-    Ausrede_37 ="Es kam zu einem OSI-Layer 8 Fehler"
+    Ausrede_37 = "Es kam zu einem OSI-Layer 8 Fehler"
 
 
 
