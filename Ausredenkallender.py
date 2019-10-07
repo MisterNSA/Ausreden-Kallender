@@ -101,4 +101,32 @@ def Zufallsgenerator():
     Ausrede = random.choice(Ausreden_Liste)
     print ("\n Die Ausrede des Tages lautet - ", Ausrede)
 
-Zufallsgenerator()
+Zufallsgenerator()  
+
+
+''' VERSUCH FÜR MEHRFACHERKENNUNG UND VERHINDERUNG
+
+Tag = 1 # Momentan zum Testen, da noch nicht mit Kallender verbunden
+
+    Tag_1 = [] # Liste für jeden Tag erstellen
+    Tag_2 = []
+    Tag_3 = []
+    Tag_4 = []
+
+''' VERSUCH 1
+    try: # ***NOCH ZU ERLEDIGEN*** Wenn Versuch fehlschlägt weil alle Ausrede zum vermehrten Male vorkommt -> Except fehlermeldung
+        if Tag = 1: # Wenn es der erste Tag ist dann:
+            Tag_1.append(Ausrede) # Momentane Ausrede zur Liste der an Tag eins vorgekommenen hinzufügen
+            if Tag_1.count(Ausrede)==1:   # Wenn die Ausrede in der Liste Tag eins zum ersten mal vorkommt
+                print("Die Ausrede des heutigen Tages lautet: " + Ausrede)
+            else: #Wenn Ausrede schon vorkam: 
+                    # Neue Ausrede generieren und nochmal versuchen - Wie? - Keine Jumps vorhanden '''
+
+''' VERSUCH 2
+    while Tag = 1:
+        Tag_1.append(Ausrede) # Momentane Ausrede zur Liste der an Tag eins vorgekommenen hinzufügen
+            if Tag_1.count(Ausrede)==1:   # Wenn die Ausrede in der Liste Tag eins zum ersten mal vorkommt
+                print("Die Ausrede des heutigen Tages lautet: " + Ausrede)
+            else: #Wenn Ausrede schon vorkam: 
+                    # Neue Ausrede generieren und nochmal versuchen - Wie? - Keine Jumps vorhanden '''
+'''
