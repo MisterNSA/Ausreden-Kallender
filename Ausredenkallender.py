@@ -5,7 +5,8 @@
 
 '''
 -Zufallsgenerator erstellen, der zufällig eine Ausrede auswählt (Am besten eigene Funktion "Zufallsgenerator", der Wert per return zurück gibt)
--
+-Funktion(?), die erkennt, ob die Ausrede für diesen Tag atomar ist oder schon mehrfach vorgekommen ist / Einmaligkeit gewährleisten
+-Integration des Kalenders seitens Betriebssystem um festzustellen, ob ein neuer Tag ist
 '''
 import random
 
