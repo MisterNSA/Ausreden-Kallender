@@ -9,8 +9,11 @@
 -Integration des Kalenders seitens Betriebssystem um festzustellen, ob ein neuer Tag ist
 '''
 import random
+import time
 
 #def Ausredenkalender():
+    #mit einer while-Schleife gewährleisten, dass das Programm so lange arbeitet, bis der nutzer es schließt
+    #Button zum neu generieren
 
 
 
@@ -105,15 +108,45 @@ def Zufallsgenerator():
 Zufallsgenerator()  
 
 
-''' VERSUCH FÜR MEHRFACHERKENNUNG UND VERHINDERUNG
 
-Tag = 1 # Momentan zum Testen, da noch nicht mit Kallender verbunden
 
-    Tag_1 = [] # Liste für jeden Tag erstellen
-    Tag_2 = []
-    Tag_3 = []
-    Tag_4 = []
 
+
+
+
+''' VERSUCH FÜR MEHRFACHERKENNUNG UND VERHINDERUNG '''
+
+
+def Datumserkennung():               #prüfen, ob noch der selbe Tag ist
+    
+    Ausreden_heute = [] 
+    
+    
+    Day = 13 #nur zum testen
+    Today = int (time.strftime("%d", time.localtime())).    #momentanen Tag erkennen
+
+    if Day == Today:                                                    #wenn es noch der selbe Tag ist:
+        print("Die Ausrede des heutigen Tages lautet: " + Ausrede)      #Ausrede ausgeben 
+        Ausreden_heute.append(Ausrede)                                  #Ausrede zur Liste der heute schon vorgekommenen Ausreden hinzufügen
+
+    else:
+        Day = Today                                                     #wenn es ein anderer Tag ist:
+        Ausreden_heute = []                                             #Ausredenliste der schon vorgekommenen Ausreden reseten
+
+
+
+Datumserkennung()
+
+
+
+    
+
+    
+    
+    
+    
+    
+    
 ''' VERSUCH 1
     try: # ***NOCH ZU ERLEDIGEN*** Wenn Versuch fehlschlägt weil alle Ausrede zum vermehrten Male vorkommt -> Except fehlermeldung
         if Tag = 1: # Wenn es der erste Tag ist dann:
