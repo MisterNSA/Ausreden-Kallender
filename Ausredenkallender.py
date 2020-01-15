@@ -66,7 +66,7 @@ def Ausredenkalender():
             Ausrede_35 = "Mal wieder ein Klassicher BNC (brain not connected) Fehler"
             Ausrede_36 = "Veraltete Hardware"
             Ausrede_37 = "Es kam zu einem OSI-Layer 8 Fehler"
-            Ausrede_38 = "Aufgrund der Verspätung eines vorausfahrenden Zuges, musste dervfür dieses Problem zuständige Mitarbeiter heute zuhause bleiben"
+            Ausrede_38 = "Aufgrund der Verspätung eines vorausfahrenden Zuges, musste der für dieses Problem zuständige Mitarbeiter heute zuhause bleiben"
             Ausrede_39 = "Einer unserer Mitarbeiter ist mit der Deutschen Bahn auf dem Weg zu ihnen. Vorraussichtliche Ankunftszeit: 8 Tage verbleibend"
 
 
