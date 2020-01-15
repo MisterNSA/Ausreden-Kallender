@@ -42,5 +42,5 @@ Momentane Vorschläge für Fehler:
 - Mal wieder ein Klassicher BNC (brain not connected) Fehler
 - Veraltete Hardware
 - Es kam zu einem OSI-Layer 8 Fehler
-
-
+- Aufgrund der Verspätung eines vorausfahrenden Zuges, musste die für dieses Problem zuständige Person heute zu Hause bleiben
+- Einer unserer Mitarbeiter ist mit der Deutschen Bahn auf dem Weg zu ihnen. Vorraussichtliche Ankunftszeit: 8 Tage verbleibend
