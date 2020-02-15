@@ -1,102 +1,53 @@
-# Projektname: Ausredenkallender 
+# Projektname: Ausredenkallender
+# Entwicklungsschritt: Klassenbibliothek 
 # Ersteller: Tobias Weber
-# Version 0.9. 17.01.2020
+# Version 0.16 mit Klassen 16.02.2020
 
-import random
-import time
-
-#def Ausredengenerator():
+import myFunctions #Importiert Funktionen
 
 
-"""-----E-----"""
+Data_used = [] #Liste für schon benutzte Daten
+Data_list = myFunctions.Data_import() #Liste mit Daten von Funktion holen
+Day = myFunctions.Today() #Momentanen Tag ermitteln
+counter = 1 
 
 
-""" Um Ausreden einzulesen, bitte eine Ausreden.txt Datei im selben Verzeichnis erstellen. 
-    Ausreden hineinschreiben und nach jeder Ausrede mit Enter bestätigen bzw. eine neue Zeile anfangen.
-    (Bei .rtf gibt es anscheinend Probleme mit der Codierung, deshalb bitte nur .txt verwenden.)
-"""
+def Main_Programm(Data_list, Day, Data_used, counter):
+       
+    Data = myFunctions.Random(Data_list)
 
+    if Day == myFunctions.Today():  #Wenn noch der selbe Tag ist
+        if counter != "False":  #UND Der Counter noch nicht überschritten wurde
+            if myFunctions.Redundanz_Überprüfung(Data, Data_used, Data_list) != "Alle Daten kamen schon vor": #UND Nicht schon alle Daten vorkamen
+                if myFunctions.Redundanz_Überprüfung(Data, Data_used, Data_list) != False:                    #UND die momentanen Daten nicht schon vorkamen
+                    print("Die Ausrede des heutigen Tages lautet: " + Data) #Daten ausgeben
+                    Data_used.append(Data)                                  #Daten zur Liste benutzter Daten hinzufügen
+                    counter = myFunctions.Aufrufe_counter(counter)          #counter erhöhen /// FUNKTION WIRKLICH NÖTIG? ///
 
-def Data_import():
-    # Textatei öffnen und Textblock für Textblock in Liste einlesen
-    Data_source = open('Ausreden.txt', 'r')
-    return(Data_source)
-    Data_source.close()
-
-
-def Today():
-    return int(time.strftime("%d", time.localtime()))
-
-
-def User_input():
-    Input = input()
-    return(Input)
-
-
-"""-----A-----"""
-
-
-def Data_output(Data):
-    print("Die Ausrede des heutigen Tages lautet: " + Data)
-
-
-def all_used():
-    print("Das waren alle Ausreden, bitte starten Sie das Programm neu")
-
-
-def Contine_or_not():
-    print("Möchten Sie eine neue Ausrede generieren? Y/N")
-    return(User_input())
-
-
-"""-----V-----"""
-
-
-Data_list = []  # Liste um Ausreden zu speichern
-
-for i in Data_import():  # Für jeden Datensatz
-    Data_list.append(i)  # Datensatz in Liste speichern
-    #Datei wieder schließen
-
-
-def Random(Data_list):  # Es muss kein Wert mitgegeben werden. Diese Fuktion generiert nur eine Ausrede
-
-    Data = random.choice(Data_list)  # Zufällige Ausrede auswählen
-    return(Data)
-
-
-def Output_Data(Day, Data_used, Data_list):
-
-    Data = Random(Data_list)
-
-    if Day == Today():  # wenn es noch der selbe Tag ist:
-        if Data in Data_used:  # Prüfen, ob Ausrede schon vorkam
-            if len(Data_list) == len(Data_used):  # Prüfen, ob schon alle Ausreden vorkamen
-                all_used()
-                pass
+                    print("Möchten Sie eine neue Ausrede generieren? Y/N")
+                    Input = input()
+                    if Input == "y" or Input == "Y":  # Soll eine weitere Ausrede generiert werden?
+                        Main_Programm(Data_list, Day, Data_used, counter)   #Rekursion durch erneutes Aufrufen der Funktion
+                else:
+                    Main_Programm(Data_list, Day, Data_used, counter)   #Programm neu Aufrufen, um neue Datei auszuwählen
             else:
-                # Falls Ausrede schon vorkam, neu starten
-                Output_Data(Day, Data_used, Data_list)
+                print("Alle Daten kamen schon vor - bitte starten Sie das Programm neu")
         else:
-            Data_output(Data)
-            #print("Die Ausrede des heutigen Tages lautet: " + Datensatz)      #Ausrede ausgeben
-            # Ausrede zur Liste der heute schon vorgekommenen Ausreden hinzufügen
-            Data_used.append(Data)
-            Contine_or_not()
-            if Input == "y" or "Y":  # Soll eine weitere Ausrede generiert werden?
-                # neu starten
-                Output_Data(Day, Data_used, Data_list), Data_used
-            else:
-                pass
+            print("Die gesetzte Aufrufsanzahl wurde ereicht")
+            #irgendwas machen
     else:
-        Day = Today()  # wenn es ein anderer Tag ist:
-        Data_used = []  # Ausredenliste der schon vorgekommenen Ausreden reseten
-        Output_Data(Day, Data_used, Data_list)  # neu starten
+        Day =  myFunctions.Today()                          #Tag aktualisieren
+        Data_used = []                                      #Liste benutzter Daten leeren
+        counter = 1                                         #Counter zurücksetzen
+        Main_Programm(Data_list, Day, Data_used, counter)   #Programm neu starten
+
+Main_Programm(Data_list, Day, Data_used, counter)
 
 
+"""
+Day = int(time.strftime("%d", time.localtime())) #Momentanen Tag ermitteln
 
-Data_used = []  # Erster durchlauf vor Schleife
-Day = Today()
+
 Data = Random(Data_list)  # Zufällige Ausrede auswählen
 
 Data_output(Data)
@@ -108,5 +59,4 @@ if Input == "y" or Input == "Y":  # Soll eine weitere Ausrede generiert werden?
     Output_Data(Day, Data_used, Data_list)
 else:
     pass  # Program beenden
-
-#Ausredengenerator()
+"""
