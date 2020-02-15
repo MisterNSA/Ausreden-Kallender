@@ -19,7 +19,7 @@ Auf allen Rechnern laufen Service-Pack-Updates
 Borg-Prozess im Linux-Cluster assimiliert alle Systemprozesse
 Beim Dual-Prozessor-Server streiten die CPUs um internen Cache-Speicher
 Ihr Computer hat die Bits nicht zurückgegeben, die er vom Internet bekommen hat
-Fehler 40 sorgt für Fehlerhafte Prozessausführung (Den nehme ich auch zwei Mal mit rein)
+Fehler 40 sorgt für Fehlerhafte Prozessausführung 
 Die CPU braucht eine Rekalibrierung
 Schleife in der Schleife des redundanten Loopback
 Wir haben nicht genug Lizenzen
