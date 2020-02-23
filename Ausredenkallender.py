@@ -45,7 +45,7 @@ def Ausrede_ausgeben(Day, Ausreden_heute, Ausreden_Liste):
             Ausreden_heute.append(Ausrede)                                  #Ausrede zur Liste der heute schon vorgekommenen Ausreden hinzufügen
             print("Möchten Sie eine neue Ausrede generieren? Y/N")
             Input = input()              
-            if Input == "y" or "Y":      #Soll eine weitere Ausrede generiert werden?
+            if Input == "y" or Input == "Y":      #Soll eine weitere Ausrede generiert werden?
                 Ausrede_ausgeben(Day, Ausreden_heute, Ausreden_Liste), Ausreden_heute #neu starten
             else:
                 pass
