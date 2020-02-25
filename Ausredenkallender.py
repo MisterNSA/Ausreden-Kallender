@@ -48,6 +48,28 @@ Main_Programm(Data_list, Day, Data_used, counter)
 Day = int(time.strftime("%d", time.localtime())) #Momentanen Tag ermitteln
 
 
+    if Day == Today:                                               #wenn es noch der selbe Tag ist:
+        if Ausrede in Ausreden_heute:                              #Prüfen, ob Ausrede schon vorkam
+            if len(Ausreden_Liste) == len(Ausreden_heute):         #Prüfen, ob schon alle Ausreden vorkamen
+                print("Das waren alle Ausreden, bitte starten Sie das Programm neu")
+                pass
+            else:
+                Ausrede_ausgeben(Day, Ausreden_heute, Ausreden_Liste) # Falls Ausrede schon vorkam, neu starten
+        else:    
+            print("Die Ausrede des heutigen Tages lautet: " + Ausrede)      #Ausrede ausgeben 
+            Ausreden_heute.append(Ausrede)                                  #Ausrede zur Liste der heute schon vorgekommenen Ausreden hinzufügen
+            print("Möchten Sie eine neue Ausrede generieren? Y/N")
+            Input = input()              
+            if Input == "y" or Input == "Y":      #Soll eine weitere Ausrede generiert werden?
+                Ausrede_ausgeben(Day, Ausreden_heute, Ausreden_Liste), Ausreden_heute #neu starten
+            else:
+                pass
+    else:
+        Day = Today                                                     #wenn es ein anderer Tag ist:
+        Ausreden_heute = []                                             #Ausredenliste der schon vorgekommenen Ausreden reseten
+        Ausrede_ausgeben(Day, Ausreden_heute, Ausreden_Liste)                                           #neu starten
+
+
 Data = Random(Data_list)  # Zufällige Ausrede auswählen
 
 Data_output(Data)
