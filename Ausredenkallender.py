@@ -1,84 +1,49 @@
-# Projektname: Ausredenkallender
-# Entwicklungsschritt: Klassenbibliothek 
-# Ersteller: Tobias Weber
-# Version 0.16 mit Klassen 16.02.2020
+#################################################
+# Projektname: Ausredenkallender                #
+# Creator: Tobias Dominik Weber aka MisterNSA   #
+# Version 0.7 17.05.2020                        #
+#################################################
+import myFunctions
 
-import myFunctions #Importiert Funktionen
+# List for alredy used excuses
+excuses_used = []
+# get List of excuses
+excuses_list = myFunctions.Data_import()
+today = myFunctions.Today()
 
 
-Data_used = [] #Liste für schon benutzte Daten
-Data_list = myFunctions.Data_import() #Liste mit Daten von Funktion holen
-Day = myFunctions.Today() #Momentanen Tag ermitteln
-counter = 1 
-
-
-def Main_Programm(Data_list, Day, Data_used, counter):
-       
-    Data = myFunctions.Random(Data_list)
-
-    if Day == myFunctions.Today():  #Wenn noch der selbe Tag ist
-        if counter != "False":  #UND Der Counter noch nicht überschritten wurde
-            if myFunctions.Redundanz_Überprüfung(Data, Data_used, Data_list) != "Alle Daten kamen schon vor": #UND Nicht schon alle Daten vorkamen
-                if myFunctions.Redundanz_Überprüfung(Data, Data_used, Data_list) != False:                    #UND die momentanen Daten nicht schon vorkamen
-                    print("Die Ausrede des heutigen Tages lautet: " + Data) #Daten ausgeben
-                    Data_used.append(Data)                                  #Daten zur Liste benutzter Daten hinzufügen
-                    counter = myFunctions.Aufrufe_counter(counter)          #counter erhöhen /// FUNKTION WIRKLICH NÖTIG? ///
-
-                    print("Möchten Sie eine neue Ausrede generieren? Y/N")
-                    Input = input()
-                    if Input == "y" or Input == "Y":  # Soll eine weitere Ausrede generiert werden?
-                        Main_Programm(Data_list, Day, Data_used, counter)   #Rekursion durch erneutes Aufrufen der Funktion
-                else:
-                    Main_Programm(Data_list, Day, Data_used, counter)   #Programm neu Aufrufen, um neue Datei auszuwählen
+def Main_Programm(excuses_used, excuses_list, today):
+    excuse = myFunctions.Choose_random_excuse(excuses_list)
+    # test if it is the same day
+    if today == myFunctions.Today():
+        # test if all excuses were used already
+        if myFunctions.Check_for_duplicates(excuse, excuses_used, excuses_list) != "All excuses used":
+            # test if current excuse was already used
+            if myFunctions.Check_for_duplicates(excuse, excuses_used, excuses_list) != False:
+                print("Todays excuse is: " + excuse)
+                # Add excuse to list of used excuses
+                excuses_used.append(excuse)
+                print("Want to generate a new excuse? Y/N")
+                Input = input().lower()
+                if Input == "y":
+                    Main_Programm(excuses_used, excuses_list, today)
             else:
-                print("Alle Daten kamen schon vor - bitte starten Sie das Programm neu")
+                # Restart loop to choose new excuse
+                Main_Programm(excuses_used, excuses_list, today)
         else:
-            print("Die gesetzte Aufrufsanzahl wurde ereicht")
-            #irgendwas machen
+            print("All Excuses were used. Want to reset the excuses? Y/N")
+            Input = input().lower()
+            if Input == "y":
+                # update day, clear list of used excuses and restart the loop
+                today = myFunctions.Today()
+                excuses_used = []
+                Main_Programm(excuses_used, excuses_list, today)
     else:
-        Day =  myFunctions.Today()                          #Tag aktualisieren
-        Data_used = []                                      #Liste benutzter Daten leeren
-        counter = 1                                         #Counter zurücksetzen
-        Main_Programm(Data_list, Day, Data_used, counter)   #Programm neu starten
-
-Main_Programm(Data_list, Day, Data_used, counter)
+        # update day, clear list of used excuses and restart the loop
+        today = myFunctions.Today()
+        excuses_used = []
+        Main_Programm(excuses_used, excuses_list, today)
 
 
-"""
-Day = int(time.strftime("%d", time.localtime())) #Momentanen Tag ermitteln
-
-
-    if Day == Today:                                               #wenn es noch der selbe Tag ist:
-        if Ausrede in Ausreden_heute:                              #Prüfen, ob Ausrede schon vorkam
-            if len(Ausreden_Liste) == len(Ausreden_heute):         #Prüfen, ob schon alle Ausreden vorkamen
-                print("Das waren alle Ausreden, bitte starten Sie das Programm neu")
-                pass
-            else:
-                Ausrede_ausgeben(Day, Ausreden_heute, Ausreden_Liste) # Falls Ausrede schon vorkam, neu starten
-        else:    
-            print("Die Ausrede des heutigen Tages lautet: " + Ausrede)      #Ausrede ausgeben 
-            Ausreden_heute.append(Ausrede)                                  #Ausrede zur Liste der heute schon vorgekommenen Ausreden hinzufügen
-            print("Möchten Sie eine neue Ausrede generieren? Y/N")
-            Input = input()              
-            if Input == "y" or Input == "Y":      #Soll eine weitere Ausrede generiert werden?
-                Ausrede_ausgeben(Day, Ausreden_heute, Ausreden_Liste), Ausreden_heute #neu starten
-            else:
-                pass
-    else:
-        Day = Today                                                     #wenn es ein anderer Tag ist:
-        Ausreden_heute = []                                             #Ausredenliste der schon vorgekommenen Ausreden reseten
-        Ausrede_ausgeben(Day, Ausreden_heute, Ausreden_Liste)                                           #neu starten
-
-
-Data = Random(Data_list)  # Zufällige Ausrede auswählen
-
-Data_output(Data)
-# Ausreden, die schon vorkamen in Liste der vorgekommenen Ausreden
-Data_used.append(Data)
-Input = Contine_or_not()
-if Input == "y" or Input == "Y":  # Soll eine weitere Ausrede generiert werden?
-    # Funktion aufrufen - Diese dient als Schleife
-    Output_Data(Day, Data_used, Data_list)
-else:
-    pass  # Program beenden
-"""
+if __name__ == "__main__":
+    Main_Programm(excuses_used, excuses_list, today)
