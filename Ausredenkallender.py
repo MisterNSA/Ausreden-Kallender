@@ -5,45 +5,46 @@
 #################################################
 import myFunctions
 
-# List for alredy used excuses
-excuses_used = []
 # get List of excuses
-excuses_list = myFunctions.Data_import()
 today = myFunctions.Today()
+excuses_list = myFunctions.Data_import()
 
 
-def Main_Programm(excuses_used, excuses_list, today):
+def Main_Programm(today, excuses_list):
     excuse = myFunctions.Choose_random_excuse(excuses_list)
-    # test if it is the same day
-    if today == myFunctions.Today():
-        # test if all excuses were used already
-        if myFunctions.Check_for_duplicates(excuse, excuses_used, excuses_list) != "All excuses used":
-            # test if current excuse was already used
-            if myFunctions.Check_for_duplicates(excuse, excuses_used, excuses_list) != False:
-                print("Todays excuse is: " + excuse)
-                # Add excuse to list of used excuses
-                excuses_used.append(excuse)
-                print("Want to generate a new excuse? Y/N")
-                Input = input().lower()
-                if Input == "y":
-                    Main_Programm(excuses_used, excuses_list, today)
-            else:
-                # Restart loop to choose new excuse
-                Main_Programm(excuses_used, excuses_list, today)
+    if len(excuses_list) != 0:
+        if today == myFunctions.Today():
+            print("Todays excuse is: {}".format(excuse))
+            ValidInput = False
+            while ValidInput == False:
+                Input = input("Want to generate a new excuse? Y/N: ")
+                Input = Input.lower()
+                if Input in ["y", "n", "yes", "no"]:
+                    ValidInput = True
+                    if Input == "y":
+                        Main_Programm(today, excuses_list)
+                else:
+                    print("Invalid Input. Please enter Y for Yes or n for no!")
+
         else:
-            print("All Excuses were used. Want to reset the excuses? Y/N")
-            Input = input().lower()
-            if Input == "y":
-                # update day, clear list of used excuses and restart the loop
-                today = myFunctions.Today()
-                excuses_used = []
-                Main_Programm(excuses_used, excuses_list, today)
+            today = myFunctions.Today()
+            excuses_list = myFunctions.Data_import()
+            Main_Programm(today, excuses_list)
     else:
-        # update day, clear list of used excuses and restart the loop
-        today = myFunctions.Today()
-        excuses_used = []
-        Main_Programm(excuses_used, excuses_list, today)
+        ValidInput = False
+        while ValidInput == False:
+            Input = input(
+                "All Excuses were used. Want to reset the excuses? Y/N: ")
+            Input = Input.lower()
+            if Input in ["y", "n", "yes", "no"]:
+                ValidInput = True
+                if Input == "y":
+                    today = myFunctions.Today()
+                    excuses_list = myFunctions.Data_import()
+                    Main_Programm(today, excuses_list)
+            else:
+                print("Invalid Input. Please enter Y for Yes or n for no!")
 
 
 if __name__ == "__main__":
-    Main_Programm(excuses_used, excuses_list, today)
+    Main_Programm(today, excuses_list)
