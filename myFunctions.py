@@ -52,22 +52,10 @@ def Today():
     return int(time.strftime("%d", time.localtime()))
 
 
-# Choose a random excuse from the list
+# Choose a random excuse and remove it from the list
 def Choose_random_excuse(excuses_list):
     excuse = random.choice(excuses_list)
+    index = excuses_list.index(excuse)
+    excuses_list.pop(index)
     return(excuse)
 
-
-# Checks, if excuse was already used
-# three return Values:
-# True - excuse wasent used jet
-# False - excuse was used, but the are unused excuses left
-# "All excuses used" - should be self explaining
-def Check_for_duplicates(excuse, excuse_used, excuses_list):
-    if excuse in excuse_used:
-        if len(excuses_list) == len(excuse_used):
-            return("All excuses used")
-        else:
-            return False
-    else:
-        return True
