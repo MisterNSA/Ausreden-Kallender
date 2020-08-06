@@ -1,2 +1,2 @@
+[Path]
 Path to excuses: ‪C:\Users\Tobias\Desktop\Ausreden.txt
-Please let a single Space after the colon!
